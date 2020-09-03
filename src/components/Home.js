@@ -7,8 +7,9 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            item: []
-
+            item: [],
+            quantity: 0,
+            donations: 0
         };
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,12 +19,19 @@ class Home extends Component {
        fetch('http://localhost:8080/api/institution')
           .then(response => response.json())
           .then(data => this.setState({ item: data}));
+
+          fetch('/api/donation/quantity')
+          .then(response => response.json())
+          .then(data => this.setState({ quantity: data}));
+
+          fetch('/api/donations/count')
+          .then(response => response.json())
+          .then(data => this.setState({ donations: data}));
       }
 
 
-
     render() {
-        const{item}=this.state;
+        const{item, quantity, donations}=this.state;
         return <>
             <div>
                 <header class="header--main-page">
@@ -56,13 +64,13 @@ class Home extends Component {
                 <section id="stats" class="stats">
                     <div class="container container--85">
                         <div class="stats--item">
-                            <em>10</em>
+                            <em>{quantity}</em>
                             <h3>Oddanych worków</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum tempora!</p>
                         </div>
 
                         <div class="stats--item">
-                            <em>5</em>
+                        <em>{donations}</em>
                             <h3>Przekazanych darów</h3>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas quam.</p>
                         </div>
@@ -118,33 +126,36 @@ class Home extends Component {
                         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
                              Możesz sprawdzić czym się zajmują.</p>
 
+                            <div class="help--slides-active" >
                              {item.map((value) =>{ 
-                    return <>
+                                return <>
                              <ul class="help--slides-items">
                                 <li>
                                 <div class="col">
                                     <div class="title">Fundacja "{value.name}"</div>
                                     <div class="subtitle">Cel i misja: {value.description}.</div>
                                 </div>
+                                    
 
                                 {/* <div class="col">
                                     <div class="title">Fundacja "A kogo"</div>
                                     <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
                                 </div> */}
                             </li>
-                            {/* <li>
-                                <div class="col">
+                            <li>
+                                {/* <div class="col">
                                     <div class="title">Fundacja “Dla dzieci"</div>
                                     <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                                </div>
-                                <div class="col">
+                                </div> */}
+                                {/* <div class="col">
                                     <div class="title">Fundacja “Bez domu”</div>
                                     <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                                </div>
-                            </li> */}
+                                </div> */}
+                            </li>
                         </ul>
                              </>
-                         })}
+                          })} 
+                          </div>
                     </div>
                     
                 </section>
