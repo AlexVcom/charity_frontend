@@ -1444,12 +1444,11 @@ header nav ul li:last-of-type {
 
 /* line 57, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col:last-child {
-  text-align: right;
+  text-align: auto;
 }
 
 /* line 61, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col:after {
-  columns: 2 auto;
   content: "";
   width: 70%;
   height: 1px;
@@ -1461,7 +1460,7 @@ header nav ul li:last-of-type {
 
 /* line 72, scss/modules/homepage-sections/_help.scss */
 .help--slides-items .col:last-child:after {
-  float: right;
+  float: auto;
 }
 
 /* line 77, scss/modules/homepage-sections/_help.scss */
@@ -1471,6 +1470,11 @@ header nav ul li:last-of-type {
   font-style: normal;
   font-size: 2rem;
   margin-bottom: 5px;
+}
+
+/* line 129 home.js*/
+.help--slides-active{
+  columns: 2 auto;
 }
 
 /* line 83, scss/modules/homepage-sections/_help.scss */
