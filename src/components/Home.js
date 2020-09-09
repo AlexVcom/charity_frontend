@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import '../CSS/style.css'
-import '../js/app.js'
 
 class Home extends Component {
 
@@ -8,8 +6,7 @@ class Home extends Component {
         super(props);
         this.state = {
             item: [],
-            quantity: 0,
-            donations: 0
+            info: []
         };
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,18 +17,16 @@ class Home extends Component {
           .then(response => response.json())
           .then(data => this.setState({ item: data}));
 
-          fetch('/api/donation/quantity')
+        fetch('http://localhost:8080/api/donations')
           .then(response => response.json())
-          .then(data => this.setState({ quantity: data}));
+          .then(data => this.setState({ info: data}));
 
-          fetch('/api/donations/count')
-          .then(response => response.json())
-          .then(data => this.setState({ donations: data}));
-      }
+
+        }
 
 
     render() {
-        const{item, quantity, donations}=this.state;
+        const{item, info}=this.state;
         return <>
             <div>
                 <header class="header--main-page">
@@ -61,21 +56,23 @@ class Home extends Component {
                     </div>
                 </header>
 
-                <section id="stats" class="stats">
-                    <div class="container container--85">
+                 <section id="stats" class="stats">
+                    
+            
+                     <div class="container container--85">
                         <div class="stats--item">
-                            <em>{quantity}</em>
+                            <em>{info.donationSumQuantity}</em>
                             <h3>Oddanych worków</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum tempora!</p>
                         </div>
 
                         <div class="stats--item">
-                        <em>{donations}</em>
+                        <em>{info.donationCounter}</em>
                             <h3>Przekazanych darów</h3>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas quam.</p>
                         </div>
-
                     </div>
+                      
                 </section>
 
                 <section id="steps" class="steps">
@@ -126,8 +123,9 @@ class Home extends Component {
                         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
                              Możesz sprawdzić czym się zajmują.</p>
 
+                            {/* // left table / rigt  */}
                             <div class="help--slides-active" >
-                             {item.map((value) =>{ 
+                             {item.map((value, index) =>{ 
                                 return <>
                              <ul class="help--slides-items">
                                 <li>
