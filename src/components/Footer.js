@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import '../CSS/style.css'
-// import '../js/app.js'
 
 
 class Footer extends Component {
@@ -8,23 +6,23 @@ class Footer extends Component {
         return (
             <div>
                 <footer>
-                <div class="contact">
+                <div className="contact">
                     <h2>Skontaktuj się z nami</h2>
                     <h3>Formularz kontaktowy</h3>
-                    <form class="form--contact">
-                        <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię" /></div>
-                        <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko" /></div>
+                    <form className="form--contact">
+                        <div className="form-group form-group--50"><input type="text" name="name" placeholder="Imię" /></div>
+                        <div className="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko" /></div>
 
-                        <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
+                        <div className="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
 
-                        <button class="btn" type="submit">Wyślij</button>
+                        <button className="btn" type="submit">Wyślij</button>
                     </form>
                 </div>
-                <div class="bottom-line">
-                    <span class="bottom-line--copy">Copyright &copy; 2018</span>
-                    <div class="bottom-line--icons">
-                        <a href="#" class="btn btn--small"> <img obcject src={require('../images/icon-facebook.svg')} /> </a> <a href="#"
-                            class="btn btn--small"> <img object src={require('../images/icon-instagram.svg')} /></a>
+                <div className="bottom-line">
+                    <span className="bottom-line--copy">Copyright & copy; 2018</span>
+                    <div className="bottom-line--icons">
+                        <a href="/" className="btn btn--small"> <img obcject="true" src={require('/Users/alex/PORTFOLIO_LAB/charity_frontend/src/images/icon-facebook.svg')} alt=""/> </a> <a href="/"
+                            className="btn btn--small"> <img object="true" src={require('/Users/alex/PORTFOLIO_LAB/charity_frontend/src/images/icon-instagram.svg')} alt=""/></a>
                     </div>
                 </div>
                 </footer>

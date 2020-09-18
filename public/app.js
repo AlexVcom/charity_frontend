@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+(function() {
 
   /**
    * Form Select
@@ -152,9 +152,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: Validation
 
+
       this.slides.forEach(slide => {
         slide.classList.remove("active");
-
         if (slide.dataset.step === this.currentStep) {
           slide.classList.add("active");
         }
@@ -162,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
-
       // TODO: get data from inputs and show them in summary
     }
 
@@ -172,3 +171,4 @@ document.addEventListener("DOMContentLoaded", function() {
     new FormSteps(form);
   }
 });
+
